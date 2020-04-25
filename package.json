@@ -1,12 +1,12 @@
 {
   "name": "hello-express",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/oasalonen/hello-express",
   "author": "Olli Salonen",
   "license": "Apache-2.0",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "build": "echo build",
     "install": "echo install"
   },
