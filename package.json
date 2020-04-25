@@ -1,0 +1,11 @@
+{
+  "name": "hello-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/oasalonen/hello-express",
+  "author": "Olli Salonen",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
