@@ -5,6 +5,9 @@
   "repository": "https://github.com/oasalonen/hello-express",
   "author": "Olli Salonen",
   "license": "Apache-2.0",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   }
