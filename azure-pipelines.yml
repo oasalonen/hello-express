@@ -29,3 +29,7 @@ steps:
   displayName: 'npm install and build'
 
 - task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
