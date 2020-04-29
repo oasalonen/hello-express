@@ -11,9 +11,9 @@ app.get('/boom', (req, res) => {
 });
 
 // Serve static content
-const staticPath = __dirname === '.' 
-    ? 'D:\\home\\site\\wwwroot\\public' // workaround for Azure App Service
-    : path.join(__dirname, 'public');   // this is how it should work...
-app.use(express.static(staticPath));
+// const staticPath = __dirname === '.' 
+//     ? 'D:\\home\\site\\wwwroot\\public' // workaround for Azure App Service
+//     : path.join(__dirname, 'public');   // this is how it should work...
+// app.use(express.static(staticPath));
 
 app.listen(port, () => console.log(`Hello Express listening at http://localhost:${port}`));
