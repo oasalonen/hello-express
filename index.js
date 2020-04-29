@@ -14,8 +14,8 @@ app.get('/boom', (req, res) => {
 const staticPath = __dirname === '.' 
     ? 'public'                          // workaround for Azure App Service
     : path.join(__dirname, 'public');   // this is how it should work...
+// Use virtual static folder that points to public. Otherwise IIS Node interferes.
 app.use('/static', express.static(staticPath));
-//app.use(express.static(staticPath));
 
 app.get('/openapi', (req, res) => {
     res.sendFile(path.join(staticPath, '/swagger.yaml'));
