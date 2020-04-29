@@ -6,7 +6,7 @@
   "author": "Olli Salonen",
   "license": "Apache-2.0",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node index.js",
     "build": "echo build",
     "install": "echo install"
   },
