@@ -11,9 +11,14 @@ app.get('/boom', (req, res) => {
 });
 
 // Serve static content
-// const staticPath = __dirname === '.' 
-//     ? 'D:\\home\\site\\wwwroot\\public' // workaround for Azure App Service
-//     : path.join(__dirname, 'public');   // this is how it should work...
-// app.use(express.static(staticPath));
+const staticPath = __dirname === '.' 
+    ? 'public'                          // workaround for Azure App Service
+    : path.join(__dirname, 'public');   // this is how it should work...
+app.use('/static', express.static(staticPath));
+//app.use(express.static(staticPath));
+
+app.get('/openapi', (req, res) => {
+    res.sendFile(path.join(staticPath, '/swagger.yaml'));
+});
 
 app.listen(port, () => console.log(`Hello Express listening at http://localhost:${port}`));
