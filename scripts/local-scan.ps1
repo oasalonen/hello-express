@@ -1,0 +1,2 @@
+# Runs ZAP in a Docker container locally. Expects this server to be running on the host at port 3000
+docker run -t owasp/zap2docker-stable zap-api-scan.py -t http://host.docker.internal:3000/openapi -f openapi
