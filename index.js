@@ -11,7 +11,7 @@ app.get('/boom', (req, res) => {
 });
 
 // Serve static content
-const staticPath = path.join(__dirname, 'public');
-app.use(express.static(staticPath));
+//const staticPath = path.join(__dirname, 'public');
+//app.use(express.static(staticPath));
 
 app.listen(port, () => console.log(`Hello Express listening at http://localhost:${port}`));
