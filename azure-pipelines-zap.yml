@@ -1,4 +1,5 @@
 # Node.js
+
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -19,3 +20,34 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Olli_Salonen_subscription (163fee3d-037c-4314-941a-8e1ad810a98e)'
+    appType: 'webApp'
+    WebAppName: 'oasalonen-hello-express'
+    packageForLinux: '$(System.DefaultWorkingDirectory)'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Olli_Salonen_subscription (163fee3d-037c-4314-941a-8e1ad810a98e)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      apispec=https://oasalonen-hello-express.azurewebsites.net/openapi
+      group=learn
+      container=zap
+      location=westeurope
+      share=zap
+      storage=oasalonenzap
+      
+      storage_key=`az storage account keys list -g $group -n $storage --query "[0].value" -o tsv`
+      
+      az container create -g $group -n $container -l $location \
+          --image owasp/zap2docker-stable --ip-address Private --memory 0.5 --restart-policy Never \
+          --command-line "zap-api-scan.py -t $apispec -f openapi -r report.html -x report.xml -J report_json" \
+          --azure-file-volume-account-name $storage \
+          --azure-file-volume-account-key $storage_key \
+          --azure-file-volume-share-name $share \
+          --azure-file-volume-mount-path /zap/wrk
